@@ -1,3 +1,16 @@
+/*
+----------------------------------
+Creator: Mafly
+Discord:
+https://discord.gg/BUFxackwWb
+Youtube: MaFly
+https://www.youtube.com/c/MaFly16
+
+Website:
+https://mcblibrary.com/user/Mafly
+----------------------------------
+*/
+
 import { system } from '@minecraft/server'
 
 class Tag {
