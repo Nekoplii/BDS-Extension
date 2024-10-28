@@ -15,7 +15,7 @@ import { system, world } from "@minecraft/server";
 
 const prefix = '!';
 
-class CommandBuild {
+class CommandBuilder {
   constructor() {
     /**
      * Stores information about registered commands.
@@ -172,4 +172,20 @@ class CommandBuild {
   }
 }
 
-export default new CommandBuild();
+const CommandBuild = new CommandBuilder();
+
+world.beforeEvents.chatSend.subscribe((data) => {
+  if (data.message.startsWith(prefix)) {
+    let args = data.message.slice(prefix.length).trim().split(" ");
+    let command = args.shift().toLowerCase();
+    const player = data.sender;
+    data.cancel = true;
+
+    if (CommandBuild.valid(command, player)) {
+      let getCommand = CommandBuild.getRegistration(command);
+      getCommand.callback(data, player, args, getCommand);
+    }
+  }
+});
+
+export default new CommandBuild;
