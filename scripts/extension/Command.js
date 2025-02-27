@@ -150,7 +150,6 @@ world.beforeEvents.chatSend.subscribe((data) => {
 Command.register(
   {
     name: "help",
-    aliases: ["h"],
     description: "Provides help/list of commands.",
     usage: "[command | page]",
   },
